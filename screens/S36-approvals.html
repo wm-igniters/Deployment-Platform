@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>S36 — Approval inbox · Deployment Delivery</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="logo-area"><div class="logo-dot"></div>Deployment Delivery</div>
+<header class="appbar">
+  <div class="crumb"><a href="S3-project-list.html">WaveMaker</a> / <b>Approvals</b></div>
+  <input class="search" placeholder="Search apps, envs, executions…">
+  <span class="persona-badge admin">Admin</span>
+  <div class="avatar">GK</div>
+</header>
+<aside class="sidebar">
+<div class="nav-group">
+<div class="nav-label">Workspace</div>
+<a class="nav-item" href="S3-project-list.html"><span class="nav-icon"></span>Projects</a>
+<a class="nav-item" href="S18-dashboard.html"><span class="nav-icon"></span>Dashboard</a>
+<a class="nav-item" href="S19-env-list.html"><span class="nav-icon"></span>By Environment</a>
+<a class="nav-item" href="S21-app-list.html"><span class="nav-icon"></span>By Application</a>
+<a class="nav-item" href="S25-activity.html"><span class="nav-icon"></span>Activity</a>
+</div>
+<div class="nav-group">
+<div class="nav-label">Admin</div>
+<a class="nav-item" href="S27-connectors.html"><span class="nav-icon"></span>Cloud connectors</a>
+<a class="nav-item" href="S29-registries.html"><span class="nav-icon"></span>Container registries</a>
+<a class="nav-item" href="S30-repos.html"><span class="nav-icon"></span>Repo connectors</a>
+<a class="nav-item" href="S31-secret-mgrs.html"><span class="nav-icon"></span>Secret managers</a>
+<a class="nav-item" href="S32-secrets.html"><span class="nav-icon"></span>Secrets</a>
+<a class="nav-item" href="S33-envs.html"><span class="nav-icon"></span>Environments</a>
+<a class="nav-item" href="S34-notif.html"><span class="nav-icon"></span>Notifications</a>
+<a class="nav-item" href="S35-users.html"><span class="nav-icon"></span>Users & RBAC</a>
+<a class="nav-item active" href="S36-approvals.html"><span class="nav-icon"></span>Approvals</a>
+<a class="nav-item" href="S37-audit.html"><span class="nav-icon"></span>Audit log</a>
+<a class="nav-item" href="S38-org.html"><span class="nav-icon"></span>Org settings</a>
+</div>
+</aside>
+<main class="content">
+  <span class="screen-id">S36</span>
+  <h1>Approval inbox</h1>
+  
+    <p class="subtitle">Prod deploys waiting for an Admin to approve.</p>
+    <div class="card">
+      <div class="row" style="margin-bottom:8px"><b>billing-api · v1.4.2 → prod</b><div class="spacer"></div><span class="small muted">requested 8m ago by jane@…</span></div>
+      <div class="kv">
+        <span class="k">Diff vs current</span><span><a href="#">v1.4.0 → v1.4.2 (12 commits)</a></span>
+        <span class="k">Pre-deploy checks</span><span><span class="pill healthy">all passed</span></span>
+        <span class="k">Strategy</span><span>Canary · 10% / 50% / 100% over 30m</span>
+      </div>
+      <div class="row" style="margin-top:14px"><a class="btn danger">Reject</a><a class="btn">Comment</a><div class="spacer"></div><a class="btn primary">Approve & deploy</a></div>
+    </div>
+    <div class="card">
+      <div class="row" style="margin-bottom:8px"><b>reports-job · v2.1.1 → prod</b><div class="spacer"></div><span class="small muted">requested 1h ago by jane@…</span></div>
+      <div class="kv">
+        <span class="k">Diff vs current</span><span><a href="#">v2.1.0 → v2.1.1 (1 commit · "hotfix: null currency")</a></span>
+        <span class="k">Pre-deploy checks</span><span><span class="pill healthy">all passed</span></span>
+        <span class="k">Strategy</span><span>Rolling · 25% surge</span>
+      </div>
+      <div class="row" style="margin-top:14px"><a class="btn danger">Reject</a><a class="btn">Comment</a><div class="spacer"></div><a class="btn primary">Approve & deploy</a></div>
+    </div>
+    
+  <div class="back-link"><a href="index.html">← All screens</a></div>
+</main>
+</body></html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>S16 — Review & launch · Deployment Delivery</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="logo-area"><div class="logo-dot"></div>Deployment Delivery</div>
+<header class="appbar">
+  <div class="crumb"><a href="S3-project-list.html">payments-platform</a> / <a href="S21-app-list.html">Applications</a> / <b>New app · billing-api</b></div>
+  <input class="search" placeholder="Search apps, envs, executions…">
+  <span class="persona-badge ">User</span>
+  <div class="avatar">GK</div>
+</header>
+<aside class="sidebar">
+<div class="nav-group">
+<div class="nav-label">Workspace</div>
+<a class="nav-item active" href="S3-project-list.html"><span class="nav-icon"></span>Projects</a>
+<a class="nav-item" href="S18-dashboard.html"><span class="nav-icon"></span>Dashboard</a>
+<a class="nav-item" href="S19-env-list.html"><span class="nav-icon"></span>By Environment</a>
+<a class="nav-item" href="S21-app-list.html"><span class="nav-icon"></span>By Application</a>
+<a class="nav-item" href="S25-activity.html"><span class="nav-icon"></span>Activity</a>
+</div>
+</aside>
+<main class="content">
+  <span class="screen-id">S16</span>
+  <h1>Review & launch</h1>
+  
+    <p class="subtitle">Step 12 of 13 · Onboarding wizard · billing-api</p>
+    <div class="stepper"><a class="step done" href="S5-step1-basics.html">1. Project basics</a><a class="step done" href="S6-step2-repo.html">2. Connect repo</a><a class="step done" href="S7-step3-build.html">3. Build config</a><a class="step done" href="S8-step4-cloud.html">4. Pick cloud</a><a class="step done" href="S9-step5-connector.html">5. Cloud connector</a><a class="step done" href="S10-step6-target.html">6. Deployment target</a><a class="step done" href="S11-step7-env.html">7. Environment</a><a class="step done" href="S12-step8-deploy-cfg.html">8. Deploy config</a><a class="step done" href="S13-step9-strategy.html">9. Strategy</a><a class="step done" href="S14-step10-observ.html">10. Observability</a><a class="step done" href="S15-step11-triggers.html">11. Triggers</a><a class="step current" href="S16-step12-review.html">12. Review & launch</a><a class="step" href="S17-step13-live.html">13. Live execution</a></div>
+    <div class="two-col">
+      <div>
+    <div class="card">
+      <h3>Review</h3>
+      <div class="kv">
+        <span class="k">App</span><span>billing-api</span>
+        <span class="k">Repo</span><span>github.com/wm-igniters/billing-api · main</span>
+        <span class="k">Build</span><span>Dockerfile → ECR (wm-prod)</span>
+        <span class="k">Cloud / target</span><span>AWS · ECS Fargate (connector: wm-dev-aws)</span>
+        <span class="k">Environment</span><span>dev</span>
+        <span class="k">Resources</span><span>3 × (500m CPU, 512Mi mem)</span>
+        <span class="k">Strategy</span><span>Rolling · 25% surge · auto-rollback</span>
+        <span class="k">Observability</span><span>Platform-default logs + metrics · Slack #payments-oncall</span>
+        <span class="k">Triggers</span><span>On push to main · manual</span>
+      </div>
+      <p class="small muted" style="margin-top:14px">All steps are editable — click any pill in the stepper above to revisit.</p>
+    </div>
+    </div>
+      <div></div>
+    </div>
+    <div class="wiz-nav"><a href="S15-step11-triggers.html" class="btn">← Triggers</a><a href="S17-step13-live.html" class="btn primary">Live execution →</a></div>
+    
+  <div class="back-link"><a href="index.html">← All screens</a></div>
+</main>
+</body></html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>S28 — Edit AWS connector · wm-prod-aws · Deployment Delivery</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="logo-area"><div class="logo-dot"></div>Deployment Delivery</div>
+<header class="appbar">
+  <div class="crumb"><a href="S3-project-list.html">WaveMaker</a> / <a href="S27-connectors.html">Connectors</a> / <b>wm-prod-aws</b></div>
+  <input class="search" placeholder="Search apps, envs, executions…">
+  <span class="persona-badge admin">Admin</span>
+  <div class="avatar">GK</div>
+</header>
+<aside class="sidebar">
+<div class="nav-group">
+<div class="nav-label">Workspace</div>
+<a class="nav-item" href="S3-project-list.html"><span class="nav-icon"></span>Projects</a>
+<a class="nav-item" href="S18-dashboard.html"><span class="nav-icon"></span>Dashboard</a>
+<a class="nav-item" href="S19-env-list.html"><span class="nav-icon"></span>By Environment</a>
+<a class="nav-item" href="S21-app-list.html"><span class="nav-icon"></span>By Application</a>
+<a class="nav-item" href="S25-activity.html"><span class="nav-icon"></span>Activity</a>
+</div>
+<div class="nav-group">
+<div class="nav-label">Admin</div>
+<a class="nav-item active" href="S27-connectors.html"><span class="nav-icon"></span>Cloud connectors</a>
+<a class="nav-item" href="S29-registries.html"><span class="nav-icon"></span>Container registries</a>
+<a class="nav-item" href="S30-repos.html"><span class="nav-icon"></span>Repo connectors</a>
+<a class="nav-item" href="S31-secret-mgrs.html"><span class="nav-icon"></span>Secret managers</a>
+<a class="nav-item" href="S32-secrets.html"><span class="nav-icon"></span>Secrets</a>
+<a class="nav-item" href="S33-envs.html"><span class="nav-icon"></span>Environments</a>
+<a class="nav-item" href="S34-notif.html"><span class="nav-icon"></span>Notifications</a>
+<a class="nav-item" href="S35-users.html"><span class="nav-icon"></span>Users & RBAC</a>
+<a class="nav-item" href="S36-approvals.html"><span class="nav-icon"></span>Approvals</a>
+<a class="nav-item" href="S37-audit.html"><span class="nav-icon"></span>Audit log</a>
+<a class="nav-item" href="S38-org.html"><span class="nav-icon"></span>Org settings</a>
+</div>
+</aside>
+<main class="content">
+  <span class="screen-id">S28</span>
+  <h1>Edit AWS connector · wm-prod-aws</h1>
+  
+    <p class="subtitle">Form is schema-driven per cloud. AWS shown below.</p>
+    <div class="card" style="max-width:720px">
+      <div class="field"><label>Connector name</label><input value="wm-prod-aws"></div>
+      <div class="field"><label>Cloud</label><select><option>AWS</option><option>Azure</option><option>GCP</option><option>Kubernetes</option><option>On-prem (SSH)</option></select></div>
+      <div class="field"><label>Auth method</label><select><option>IAM role (OIDC federation) — recommended</option><option>IAM access key + secret</option><option>Assume role chain</option></select></div>
+      <div class="field"><label>Role ARN</label><input class="mono" value="arn:aws:iam::488123456789:role/wm-deploy"></div>
+      <div class="field"><label>External ID (optional)</label><input class="mono" value="wm-prod"></div>
+      <div class="field"><label>Allowed regions</label><input value="us-east-1, eu-west-1"></div>
+      <div class="card" style="background:var(--panel-2);margin:6px 0 12px"><b>Validation</b><br><span class="small muted">Runs <span class="mono">sts:GetCallerIdentity</span> on save and every 5 min thereafter.</span></div>
+      <div class="row"><a class="btn">Test connection</a><div class="spacer"></div><a class="btn">Cancel</a><a class="btn primary">Save connector</a></div>
+    </div>
+    
+  <div class="back-link"><a href="index.html">← All screens</a></div>
+</main>
+</body></html>

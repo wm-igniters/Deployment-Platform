@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Deployment Delivery — Screen prototype</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { display: block; }
+  .content { max-width: 1200px; margin: 0 auto; padding: 24px 36px 80px; }
+  .top { display: flex; align-items: center; padding: 14px 36px; border-bottom: 1px solid var(--border); background: var(--panel); }
+  .top .logo-dot { margin-right: 10px; }
+  .top .brand { font-weight: 600; }
+  .top .meta { margin-left: auto; color: var(--muted); font-size: 13px; }
+</style>
+</head><body>
+<div class="top">
+  <div class="logo-dot"></div>
+  <span class="brand">Deployment Delivery</span>
+  <span class="meta">Static screen prototype · 38 screens</span>
+</div>
+<main class="content">
+  <div class="index-hero">
+    <h1>Screen prototype</h1>
+    <p>Clickable mock of every screen in §6 of the requirements doc. Each screen is static — buttons and links navigate between screens but do not call APIs. Use this to walk product/eng/design through the surface area before backend work starts.</p>
+  </div>
+  <section class="index-section">
+            <h2><span>Auth & onboarding</span><span class="muted small">S1–S4</span></h2>
+            <div class="index-grid"><a class="idx-card" href="S1-signin.html">
+                <span class="sid">S1 · </span>
+                <span class="nm">Sign in</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S2-org-switcher.html">
+                <span class="sid">S2 · </span>
+                <span class="nm">Org switcher / picker</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S3-project-list.html">
+                <span class="sid">S3 · </span>
+                <span class="nm">Project list</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S4-project-create.html">
+                <span class="sid">S4 · </span>
+                <span class="nm">Create / edit project</span>
+                <span class="pp">User</span>
+            </a></div>
+        </section>
+<section class="index-section">
+            <h2><span>Onboarding wizard (Journey 1)</span><span class="muted small">S5–S17</span></h2>
+            <div class="index-grid"><a class="idx-card" href="S5-step1-basics.html">
+                <span class="sid">S5 · </span>
+                <span class="nm">Project basics</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S6-step2-repo.html">
+                <span class="sid">S6 · </span>
+                <span class="nm">Connect repo</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S7-step3-build.html">
+                <span class="sid">S7 · </span>
+                <span class="nm">Build config</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S8-step4-cloud.html">
+                <span class="sid">S8 · </span>
+                <span class="nm">Pick cloud</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S9-step5-connector.html">
+                <span class="sid">S9 · </span>
+                <span class="nm">Cloud connector</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S10-step6-target.html">
+                <span class="sid">S10 · </span>
+                <span class="nm">Deployment target</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S11-step7-env.html">
+                <span class="sid">S11 · </span>
+                <span class="nm">Environment</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S12-step8-deploy-cfg.html">
+                <span class="sid">S12 · </span>
+                <span class="nm">Deploy config</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S13-step9-strategy.html">
+                <span class="sid">S13 · </span>
+                <span class="nm">Strategy</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S14-step10-observ.html">
+                <span class="sid">S14 · </span>
+                <span class="nm">Observability</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S15-step11-triggers.html">
+                <span class="sid">S15 · </span>
+                <span class="nm">Triggers</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S16-step12-review.html">
+                <span class="sid">S16 · </span>
+                <span class="nm">Review & launch</span>
+                <span class="pp">User</span>
+            </a><a class="idx-card" href="S17-step13-live.html">
+                <span class="sid">S17 · </span>
+                <span class="nm">Live execution</span>
+                <span class="pp">User</span>
+            </a></div>
+        </section>
+<section class="index-section">
+            <h2><span>Dashboard (Journey 2)</span><span class="muted small">S18–S26</span></h2>
+            <div class="index-grid"><a class="idx-card" href="S18-dashboard.html">
+                <span class="sid">S18 · </span>
+                <span class="nm">Dashboard home</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S19-env-list.html">
+                <span class="sid">S19 · </span>
+                <span class="nm">By Environment — list</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S20-env-detail.html">
+                <span class="sid">S20 · </span>
+                <span class="nm">Environment detail</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S21-app-list.html">
+                <span class="sid">S21 · </span>
+                <span class="nm">By Application — list</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S22-app-detail.html">
+                <span class="sid">S22 · </span>
+                <span class="nm">Application detail</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S23-logs.html">
+                <span class="sid">S23 · </span>
+                <span class="nm">Live logs viewer</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S24-metrics.html">
+                <span class="sid">S24 · </span>
+                <span class="nm">Metrics viewer</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S25-activity.html">
+                <span class="sid">S25 · </span>
+                <span class="nm">Activity feed</span>
+                <span class="pp">Both</span>
+            </a><a class="idx-card" href="S26-exec-detail.html">
+                <span class="sid">S26 · </span>
+                <span class="nm">Execution detail</span>
+                <span class="pp">Both</span>
+            </a></div>
+        </section>
+<section class="index-section">
+            <h2><span>Admin</span><span class="muted small">S27–S38</span></h2>
+            <div class="index-grid"><a class="idx-card" href="S27-connectors.html">
+                <span class="sid">S27 · </span>
+                <span class="nm">Cloud connectors list</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S28-connector-edit.html">
+                <span class="sid">S28 · </span>
+                <span class="nm">Add / edit cloud connector</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S29-registries.html">
+                <span class="sid">S29 · </span>
+                <span class="nm">Container registries</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S30-repos.html">
+                <span class="sid">S30 · </span>
+                <span class="nm">Repo connectors</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S31-secret-mgrs.html">
+                <span class="sid">S31 · </span>
+                <span class="nm">Secret managers</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S32-secrets.html">
+                <span class="sid">S32 · </span>
+                <span class="nm">Secrets browser</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S33-envs.html">
+                <span class="sid">S33 · </span>
+                <span class="nm">Environments management</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S34-notif.html">
+                <span class="sid">S34 · </span>
+                <span class="nm">Notification channels</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S35-users.html">
+                <span class="sid">S35 · </span>
+                <span class="nm">Users & RBAC</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S36-approvals.html">
+                <span class="sid">S36 · </span>
+                <span class="nm">Approval inbox</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S37-audit.html">
+                <span class="sid">S37 · </span>
+                <span class="nm">Audit log</span>
+                <span class="pp admin">Admin</span>
+            </a><a class="idx-card" href="S38-org.html">
+                <span class="sid">S38 · </span>
+                <span class="nm">Org settings</span>
+                <span class="pp admin">Admin</span>
+            </a></div>
+        </section>
+</main>
+</body></html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>S14 — Observability · Deployment Delivery</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="logo-area"><div class="logo-dot"></div>Deployment Delivery</div>
+<header class="appbar">
+  <div class="crumb"><a href="S3-project-list.html">payments-platform</a> / <a href="S21-app-list.html">Applications</a> / <b>New app · billing-api</b></div>
+  <input class="search" placeholder="Search apps, envs, executions…">
+  <span class="persona-badge ">User</span>
+  <div class="avatar">GK</div>
+</header>
+<aside class="sidebar">
+<div class="nav-group">
+<div class="nav-label">Workspace</div>
+<a class="nav-item active" href="S3-project-list.html"><span class="nav-icon"></span>Projects</a>
+<a class="nav-item" href="S18-dashboard.html"><span class="nav-icon"></span>Dashboard</a>
+<a class="nav-item" href="S19-env-list.html"><span class="nav-icon"></span>By Environment</a>
+<a class="nav-item" href="S21-app-list.html"><span class="nav-icon"></span>By Application</a>
+<a class="nav-item" href="S25-activity.html"><span class="nav-icon"></span>Activity</a>
+</div>
+</aside>
+<main class="content">
+  <span class="screen-id">S14</span>
+  <h1>Observability</h1>
+  
+    <p class="subtitle">Step 10 of 13 · Onboarding wizard · billing-api</p>
+    <div class="stepper"><a class="step done" href="S5-step1-basics.html">1. Project basics</a><a class="step done" href="S6-step2-repo.html">2. Connect repo</a><a class="step done" href="S7-step3-build.html">3. Build config</a><a class="step done" href="S8-step4-cloud.html">4. Pick cloud</a><a class="step done" href="S9-step5-connector.html">5. Cloud connector</a><a class="step done" href="S10-step6-target.html">6. Deployment target</a><a class="step done" href="S11-step7-env.html">7. Environment</a><a class="step done" href="S12-step8-deploy-cfg.html">8. Deploy config</a><a class="step done" href="S13-step9-strategy.html">9. Strategy</a><a class="step current" href="S14-step10-observ.html">10. Observability</a><a class="step" href="S15-step11-triggers.html">11. Triggers</a><a class="step" href="S16-step12-review.html">12. Review & launch</a><a class="step" href="S17-step13-live.html">13. Live execution</a></div>
+    <div class="two-col">
+      <div>
+    <div class="card">
+      <h3>Logs</h3>
+      <div class="field"><select><option>Platform-default (built-in store, 14d retention)</option><option>Datadog</option><option>CloudWatch Logs</option><option>Loki</option><option>ELK</option></select></div>
+      <h3>Metrics</h3>
+      <div class="field"><select><option>Platform-default (Prometheus scrape)</option><option>CloudWatch Metrics</option><option>Datadog</option></select></div>
+      <h3>Alerts</h3>
+      <div class="field"><label>Channels</label><input value="#payments-oncall (Slack), oncall@wavemaker.pagerduty"></div>
+      <p class="small"><label><input type="checkbox" checked> Emit deployment markers on metric charts</label></p>
+    </div>
+    </div>
+      <div></div>
+    </div>
+    <div class="wiz-nav"><a href="S13-step9-strategy.html" class="btn">← Strategy</a><a href="S15-step11-triggers.html" class="btn primary">Triggers →</a></div>
+    
+  <div class="back-link"><a href="index.html">← All screens</a></div>
+</main>
+</body></html>

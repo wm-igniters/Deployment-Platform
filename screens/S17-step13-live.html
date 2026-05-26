@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>S17 — Live execution · Deployment Delivery</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="logo-area"><div class="logo-dot"></div>Deployment Delivery</div>
+<header class="appbar">
+  <div class="crumb"><a href="S3-project-list.html">payments-platform</a> / <a href="S21-app-list.html">Applications</a> / <b>New app · billing-api</b></div>
+  <input class="search" placeholder="Search apps, envs, executions…">
+  <span class="persona-badge ">User</span>
+  <div class="avatar">GK</div>
+</header>
+<aside class="sidebar">
+<div class="nav-group">
+<div class="nav-label">Workspace</div>
+<a class="nav-item active" href="S3-project-list.html"><span class="nav-icon"></span>Projects</a>
+<a class="nav-item" href="S18-dashboard.html"><span class="nav-icon"></span>Dashboard</a>
+<a class="nav-item" href="S19-env-list.html"><span class="nav-icon"></span>By Environment</a>
+<a class="nav-item" href="S21-app-list.html"><span class="nav-icon"></span>By Application</a>
+<a class="nav-item" href="S25-activity.html"><span class="nav-icon"></span>Activity</a>
+</div>
+</aside>
+<main class="content">
+  <span class="screen-id">S17</span>
+  <h1>Live execution</h1>
+  
+    <p class="subtitle">Step 13 of 13 · Onboarding wizard · billing-api</p>
+    <div class="stepper"><a class="step done" href="S5-step1-basics.html">1. Project basics</a><a class="step done" href="S6-step2-repo.html">2. Connect repo</a><a class="step done" href="S7-step3-build.html">3. Build config</a><a class="step done" href="S8-step4-cloud.html">4. Pick cloud</a><a class="step done" href="S9-step5-connector.html">5. Cloud connector</a><a class="step done" href="S10-step6-target.html">6. Deployment target</a><a class="step done" href="S11-step7-env.html">7. Environment</a><a class="step done" href="S12-step8-deploy-cfg.html">8. Deploy config</a><a class="step done" href="S13-step9-strategy.html">9. Strategy</a><a class="step done" href="S14-step10-observ.html">10. Observability</a><a class="step done" href="S15-step11-triggers.html">11. Triggers</a><a class="step done" href="S16-step12-review.html">12. Review & launch</a><a class="step current" href="S17-step13-live.html">13. Live execution</a></div>
+    <div class="two-col">
+      <div>
+    <div class="card">
+      <div class="row" style="margin-bottom:14px"><span class="pill" style="background:rgba(31,111,235,0.18);color:#58a6ff">● Running · 1m 24s</span><div class="spacer"></div><a class="btn">Pause</a><a class="btn danger">Cancel</a></div>
+      <div class="drawer" style="padding:8px 14px">
+        <div class="exec-step"><span class="status ok"></span><div class="nm">Checkout</div><div class="dur">3s</div></div>
+        <div class="exec-step"><span class="status ok"></span><div class="nm">Build container image</div><div class="dur">52s</div></div>
+        <div class="exec-step"><span class="status ok"></span><div class="nm">Push to ECR</div><div class="dur">11s</div></div>
+        <div class="exec-step"><span class="status run"></span><div class="nm">Deploy · ECS Fargate · rolling</div><div class="dur">18s</div></div>
+        <div class="exec-step"><span class="status pending"></span><div class="nm">Health check</div><div class="dur">—</div></div>
+        <div class="exec-step"><span class="status pending"></span><div class="nm">Smoke test</div><div class="dur">—</div></div>
+      </div>
+      <h3 style="margin-top:20px">Live logs</h3>
+      <div class="logs">
+<span class="ts">12:04:18</span> <span class="ok">▶ checkout: wm-igniters/billing-api@d4f8e1</span>
+<span class="ts">12:04:21</span>   Cloned in 3.1s
+<span class="ts">12:04:21</span> <span class="ok">▶ build: docker build -t billing-api .</span>
+<span class="ts">12:04:53</span>   Step 6/8 — RUN go build -o /app/bin
+<span class="ts">12:05:13</span>   Step 8/8 — CMD ["/app/bin/server"]
+<span class="ts">12:05:13</span>   <span class="ok">Successfully built 4f8e91a2</span>
+<span class="ts">12:05:14</span> <span class="ok">▶ push: 488...dkr.ecr.us-east-1.amazonaws.com/billing-api:d4f8e1</span>
+<span class="ts">12:05:25</span>   Pushed 8 layers, 142 MB
+<span class="ts">12:05:26</span> <span class="ok">▶ deploy: ecs update-service --service billing-api --task-def billing-api:42</span>
+<span class="ts">12:05:33</span>   <span class="warn">Rolling: 1/3 tasks replaced…</span>
+<span class="ts">12:05:38</span>   Rolling: 2/3 tasks replaced…
+      </div>
+    </div>
+    </div>
+      <div></div>
+    </div>
+    <div class="wiz-nav"><a href="S16-step12-review.html" class="btn">← Review & launch</a><a href="S17-step13-live.html" class="btn primary">Launch →</a></div>
+    
+  <div class="back-link"><a href="index.html">← All screens</a></div>
+</main>
+</body></html>

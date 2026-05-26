@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>S23 — Logs · billing-api · Deployment Delivery</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="logo-area"><div class="logo-dot"></div>Deployment Delivery</div>
+<header class="appbar">
+  <div class="crumb"><a href="S3-project-list.html">payments-platform</a> / <a href="S22-app-detail.html">billing-api</a> / <b>Logs</b></div>
+  <input class="search" placeholder="Search apps, envs, executions…">
+  <span class="persona-badge admin">Admin</span>
+  <div class="avatar">GK</div>
+</header>
+<aside class="sidebar">
+<div class="nav-group">
+<div class="nav-label">Workspace</div>
+<a class="nav-item" href="S3-project-list.html"><span class="nav-icon"></span>Projects</a>
+<a class="nav-item" href="S18-dashboard.html"><span class="nav-icon"></span>Dashboard</a>
+<a class="nav-item" href="S19-env-list.html"><span class="nav-icon"></span>By Environment</a>
+<a class="nav-item active" href="S21-app-list.html"><span class="nav-icon"></span>By Application</a>
+<a class="nav-item" href="S25-activity.html"><span class="nav-icon"></span>Activity</a>
+</div>
+<div class="nav-group">
+<div class="nav-label">Admin</div>
+<a class="nav-item" href="S27-connectors.html"><span class="nav-icon"></span>Cloud connectors</a>
+<a class="nav-item" href="S29-registries.html"><span class="nav-icon"></span>Container registries</a>
+<a class="nav-item" href="S30-repos.html"><span class="nav-icon"></span>Repo connectors</a>
+<a class="nav-item" href="S31-secret-mgrs.html"><span class="nav-icon"></span>Secret managers</a>
+<a class="nav-item" href="S32-secrets.html"><span class="nav-icon"></span>Secrets</a>
+<a class="nav-item" href="S33-envs.html"><span class="nav-icon"></span>Environments</a>
+<a class="nav-item" href="S34-notif.html"><span class="nav-icon"></span>Notifications</a>
+<a class="nav-item" href="S35-users.html"><span class="nav-icon"></span>Users & RBAC</a>
+<a class="nav-item" href="S36-approvals.html"><span class="nav-icon"></span>Approvals</a>
+<a class="nav-item" href="S37-audit.html"><span class="nav-icon"></span>Audit log</a>
+<a class="nav-item" href="S38-org.html"><span class="nav-icon"></span>Org settings</a>
+</div>
+</aside>
+<main class="content">
+  <span class="screen-id">S23</span>
+  <h1>Logs · billing-api</h1>
+  
+    <p class="subtitle">billing-api · dev · last 15 minutes · live tail</p>
+    <div class="card">
+      <div class="row" style="margin-bottom:10px">
+        <select style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px"><option>All levels</option><option>error</option><option>warn</option><option>info</option></select>
+        <input class="search" placeholder="Filter: payload, request id, error…" style="width:340px">
+        <div class="spacer"></div>
+        <a class="btn">Pause tail</a>
+        <a class="btn">Download</a>
+      </div>
+      <div class="logs">
+<span class="ts">12:14:02</span> INFO  request_id=8f1a method=POST path=/v1/charges status=200 dur=42ms
+<span class="ts">12:14:02</span> INFO  request_id=8f1b method=GET path=/healthz status=200 dur=1ms
+<span class="ts">12:14:03</span> <span class="warn">WARN  webhook retry attempt=2 provider=stripe event_id=evt_3O...</span>
+<span class="ts">12:14:04</span> INFO  request_id=8f1c method=POST path=/v1/invoices status=201 dur=88ms
+<span class="ts">12:14:05</span> <span class="err">ERROR request_id=8f1d failed to charge: card_declined (4242…4242)</span>
+<span class="ts">12:14:05</span> INFO  request_id=8f1d method=POST path=/v1/charges status=402 dur=130ms
+<span class="ts">12:14:06</span> INFO  request_id=8f1e method=GET path=/v1/customers/cust_42 status=200 dur=14ms
+<span class="ts">12:14:07</span> INFO  request_id=8f1f method=GET path=/healthz status=200 dur=1ms
+<span class="ts">12:14:08</span> <span class="ok">INFO  reconcile job complete · 1,204 invoices processed in 4.2s</span>
+      </div>
+    </div>
+    
+  <div class="back-link"><a href="index.html">← All screens</a></div>
+</main>
+</body></html>

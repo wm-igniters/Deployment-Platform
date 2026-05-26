@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>S26 — Execution detail · Deployment Delivery</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="logo-area"><div class="logo-dot"></div>Deployment Delivery</div>
+<header class="appbar">
+  <div class="crumb"><a href="S3-project-list.html">payments-platform</a> / <a href="S22-app-detail.html">billing-api</a> / <b>Execution d4f8e1</b></div>
+  <input class="search" placeholder="Search apps, envs, executions…">
+  <span class="persona-badge admin">Admin</span>
+  <div class="avatar">GK</div>
+</header>
+<aside class="sidebar">
+<div class="nav-group">
+<div class="nav-label">Workspace</div>
+<a class="nav-item" href="S3-project-list.html"><span class="nav-icon"></span>Projects</a>
+<a class="nav-item" href="S18-dashboard.html"><span class="nav-icon"></span>Dashboard</a>
+<a class="nav-item" href="S19-env-list.html"><span class="nav-icon"></span>By Environment</a>
+<a class="nav-item active" href="S21-app-list.html"><span class="nav-icon"></span>By Application</a>
+<a class="nav-item" href="S25-activity.html"><span class="nav-icon"></span>Activity</a>
+</div>
+<div class="nav-group">
+<div class="nav-label">Admin</div>
+<a class="nav-item" href="S27-connectors.html"><span class="nav-icon"></span>Cloud connectors</a>
+<a class="nav-item" href="S29-registries.html"><span class="nav-icon"></span>Container registries</a>
+<a class="nav-item" href="S30-repos.html"><span class="nav-icon"></span>Repo connectors</a>
+<a class="nav-item" href="S31-secret-mgrs.html"><span class="nav-icon"></span>Secret managers</a>
+<a class="nav-item" href="S32-secrets.html"><span class="nav-icon"></span>Secrets</a>
+<a class="nav-item" href="S33-envs.html"><span class="nav-icon"></span>Environments</a>
+<a class="nav-item" href="S34-notif.html"><span class="nav-icon"></span>Notifications</a>
+<a class="nav-item" href="S35-users.html"><span class="nav-icon"></span>Users & RBAC</a>
+<a class="nav-item" href="S36-approvals.html"><span class="nav-icon"></span>Approvals</a>
+<a class="nav-item" href="S37-audit.html"><span class="nav-icon"></span>Audit log</a>
+<a class="nav-item" href="S38-org.html"><span class="nav-icon"></span>Org settings</a>
+</div>
+</aside>
+<main class="content">
+  <span class="screen-id">S26</span>
+  <h1>Execution detail</h1>
+  
+    <p class="subtitle">billing-api · dev · v1.4.2 · started 12:04 · duration 1m 38s · by jane@…</p>
+    <div class="card-row">
+      <div class="card" style="flex:2">
+        <h3>Pipeline steps</h3>
+        <div class="exec-step"><span class="status ok"></span><div class="nm">Checkout · github.com/wm-igniters/billing-api@d4f8e1</div><div class="dur">3s</div></div>
+        <div class="exec-step"><span class="status ok"></span><div class="nm">Build · docker</div><div class="dur">52s</div></div>
+        <div class="exec-step"><span class="status ok"></span><div class="nm">Push · ECR</div><div class="dur">11s</div></div>
+        <div class="exec-step"><span class="status ok"></span><div class="nm">Deploy · ECS Fargate rolling</div><div class="dur">25s</div></div>
+        <div class="exec-step"><span class="status ok"></span><div class="nm">Health check</div><div class="dur">5s</div></div>
+        <div class="exec-step"><span class="status ok"></span><div class="nm">Smoke test</div><div class="dur">2s</div></div>
+      </div>
+      <div class="card">
+        <h3>Artifacts</h3>
+        <ul class="small">
+          <li class="mono">488...dkr.ecr.us-east-1/billing-api:d4f8e1</li>
+          <li>task-def billing-api:42</li>
+          <li>build log (12 KB)</li>
+        </ul>
+        <h3>Run controls</h3>
+        <a class="btn" style="width:100%;justify-content:center;margin-bottom:6px">Replay</a>
+        <a class="btn" style="width:100%;justify-content:center">Promote to staging</a>
+      </div>
+    </div>
+    <h2>Logs</h2>
+    <div class="logs">
+<span class="ts">12:04:18</span> <span class="ok">▶ checkout: wm-igniters/billing-api@d4f8e1</span>
+<span class="ts">12:04:53</span>   Step 6/8 — RUN go build -o /app/bin
+<span class="ts">12:05:13</span>   <span class="ok">Successfully built 4f8e91a2</span>
+<span class="ts">12:05:26</span> <span class="ok">▶ deploy: ecs update-service</span>
+<span class="ts">12:05:51</span>   <span class="ok">Rolling complete · 3/3 tasks healthy</span>
+<span class="ts">12:05:56</span>   <span class="ok">Smoke test passed</span>
+      </div>
+    
+  <div class="back-link"><a href="index.html">← All screens</a></div>
+</main>
+</body></html>

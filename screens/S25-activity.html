@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>S25 — Activity · Deployment Delivery</title>
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="logo-area"><div class="logo-dot"></div>Deployment Delivery</div>
+<header class="appbar">
+  <div class="crumb"><a href="S3-project-list.html">payments-platform</a> / <b>Activity</b></div>
+  <input class="search" placeholder="Search apps, envs, executions…">
+  <span class="persona-badge admin">Admin</span>
+  <div class="avatar">GK</div>
+</header>
+<aside class="sidebar">
+<div class="nav-group">
+<div class="nav-label">Workspace</div>
+<a class="nav-item" href="S3-project-list.html"><span class="nav-icon"></span>Projects</a>
+<a class="nav-item" href="S18-dashboard.html"><span class="nav-icon"></span>Dashboard</a>
+<a class="nav-item" href="S19-env-list.html"><span class="nav-icon"></span>By Environment</a>
+<a class="nav-item" href="S21-app-list.html"><span class="nav-icon"></span>By Application</a>
+<a class="nav-item active" href="S25-activity.html"><span class="nav-icon"></span>Activity</a>
+</div>
+<div class="nav-group">
+<div class="nav-label">Admin</div>
+<a class="nav-item" href="S27-connectors.html"><span class="nav-icon"></span>Cloud connectors</a>
+<a class="nav-item" href="S29-registries.html"><span class="nav-icon"></span>Container registries</a>
+<a class="nav-item" href="S30-repos.html"><span class="nav-icon"></span>Repo connectors</a>
+<a class="nav-item" href="S31-secret-mgrs.html"><span class="nav-icon"></span>Secret managers</a>
+<a class="nav-item" href="S32-secrets.html"><span class="nav-icon"></span>Secrets</a>
+<a class="nav-item" href="S33-envs.html"><span class="nav-icon"></span>Environments</a>
+<a class="nav-item" href="S34-notif.html"><span class="nav-icon"></span>Notifications</a>
+<a class="nav-item" href="S35-users.html"><span class="nav-icon"></span>Users & RBAC</a>
+<a class="nav-item" href="S36-approvals.html"><span class="nav-icon"></span>Approvals</a>
+<a class="nav-item" href="S37-audit.html"><span class="nav-icon"></span>Audit log</a>
+<a class="nav-item" href="S38-org.html"><span class="nav-icon"></span>Org settings</a>
+</div>
+</aside>
+<main class="content">
+  <span class="screen-id">S25</span>
+  <h1>Activity</h1>
+  
+    <p class="subtitle">Every action across the org, filterable. This is the social feed of "what's happening."</p>
+    <div class="row" style="margin-bottom:14px">
+      <select style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px"><option>All users</option></select>
+      <select style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px"><option>All apps</option></select>
+      <select style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px"><option>All envs</option></select>
+      <select style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px"><option>Last 24h</option><option>Last 7d</option></select>
+      <div class="spacer"></div>
+      <a class="btn">Export CSV</a>
+    </div>
+    <div class="card" style="padding:0">
+      <table>
+        <tbody>
+          <tr><td>30m ago</td><td><b>jane@…</b></td><td>deployed <a href="S22-app-detail.html">billing-api</a> v1.4.2 to <b>dev</b></td><td><span class="pill healthy">success</span></td></tr>
+          <tr><td>1h ago</td><td><b>mike@…</b></td><td>deployed <a href="S22-app-detail.html">customer-ui</a> v0.9.0-rc3 to <b>staging</b></td><td><span class="pill healthy">success</span></td></tr>
+          <tr><td>2h ago</td><td><b>jane@…</b></td><td>deployed <a href="S22-app-detail.html">reports-job</a> v2.1.0 to <b>dev</b></td><td><span class="pill degraded">degraded</span></td></tr>
+          <tr><td>3h ago</td><td><b>gayathri@…</b></td><td>approved <b>billing-api → prod</b> deploy</td><td><span class="pill muted">approval</span></td></tr>
+          <tr><td>4h ago</td><td><b>priya@…</b></td><td>created connector <b>wm-prod-aws</b></td><td><span class="pill muted">config</span></td></tr>
+          <tr><td>1d ago</td><td><b>mike@…</b></td><td>added env var <span class="mono">STRIPE_KEY</span> to <b>billing-api · prod</b></td><td><span class="pill muted">config</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+  <div class="back-link"><a href="index.html">← All screens</a></div>
+</main>
+</body></html>
