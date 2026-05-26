@@ -1,6 +1,8 @@
 # Deployment Delivery —  Requirements
 
-> **Vision:** A single place where a developer can connect a code repository, configure a target cloud, deploy it, and then observe it — *and* a dashboard view that surfaces everything that has been set up across environments. Everything configurable. 
+> **Vision:** A single place where a user can connect a code repository, configure a target cloud, deploy it, and then observe it — *and* a dashboard view that surfaces everything that has been set up across environments. Everything configurable.
+>
+> **Positioning:** This platform replaces Harness for all infra-providing setup — cloud connectors, environments, deployment targets, pipelines, approvals, secrets, and observability hookup are owned end-to-end here. Teams should not need Harness (or any third-party CD control plane) alongside this.
 
 ---
 
@@ -13,18 +15,20 @@
 - Deploy with a chosen strategy
 - Centralized logs, metrics, deployment history
 - A dashboard view of all apps, environments, and recent activity
+- Full replacement for Harness in the infra-provisioning + deploy + observe loop
 
 
 
 ## 2. Personas
 
+Only two personas. Everything in the product collapses to one of these.
+
 | Persona | What they do here |
 |---|---|
-| **Developer** | Connects a repo, configures the build, watches their deploy, reads logs |
-| **DevOps / Platform engineer** | Sets up cloud connectors, environments, secrets, governance rules |
-| **Tech lead / Manager** | Opens the dashboard to see what's deployed where, who broke prod, deployment frequency |
+| **Admin** | Sets up cloud connectors, container registries, secret managers, environments, notification channels, RBAC, governance/approval rules; manages users; sees org-wide dashboard and audit log |
+| **User** | Connects a repo, configures the build, picks an environment, deploys, watches the live execution, reads logs and metrics for apps they own or have access to |
 
-The two journeys below map to "Developer + DevOps" (Journey 1) and "All three" (Journey 2).
+Journey 1 below is primarily for **User** (with **Admin** doing one-time setup of cloud connectors and environments in steps 4–7). Journey 2 (dashboard) is used by both, with Admin seeing org-wide and User seeing their scoped view.
 
 ---
 
@@ -202,15 +206,116 @@ Clicking an app row opens its detail page (right side of the diagram above).
 
 ---
 
-## 6. Functional requirements by module
+## 6. Screens
 
-### 6.1 Repository integration
+The screens below are the full UI surface for v1. Each screen lists its primary persona, what it does, and the key actions on it. Screens marked **Admin** are gated by RBAC; screens marked **User** are visible to both personas (Admin sees an org-wide variant).
+
+### 6.1 Auth & onboarding
+
+| # | Screen | Persona | Purpose | Primary actions |
+|---|---|---|---|---|
+| S1 | **Sign in** | Both | SSO / SAML / email login | Sign in, forgot password |
+| S2 | **Org switcher / picker** | Both | Choose org if user belongs to multiple | Pick org, create org (first-time admin) |
+| S3 | **Project list** | Both | All projects in the current org | Open project, create project, search |
+| S4 | **Create / edit project** | User | Name, description, owners | Save, cancel |
+
+### 6.2 Onboarding wizard (Journey 1)
+
+One screen per wizard step. The wizard has a persistent **left rail** showing all 13 steps with status (done / current / pending) so the user can jump between them. Every step is resumable.
+
+| # | Screen | Persona | Purpose |
+|---|---|---|---|
+| S5 | **Step 1 — Project basics** | User | Name, description (re-uses S4) |
+| S6 | **Step 2 — Connect repo** | User | Pick provider, authorize, pick repo & branch |
+| S7 | **Step 3 — Build config** | User | Autodetect result + override (Dockerfile / Buildpack / custom / WaveMaker); registry target |
+| S8 | **Step 4 — Pick cloud** | User | AWS / Azure / GCP / K8s / on-prem cards |
+| S9 | **Step 5 — Cloud connector picker** | User | Pick from existing connectors (set up by Admin) **or** request Admin add one |
+| S10 | **Step 6 — Pick deployment target** | User | Target cards filtered by chosen cloud (ECS, EKS, Cloud Run, etc.) |
+| S11 | **Step 7 — Pick / create environment** | User | Pick existing env or request a new one (prod creation is Admin-only) |
+| S12 | **Step 8 — Deploy config** | User | Replicas, CPU/mem, env vars, secret refs, ports, health checks, ingress |
+| S13 | **Step 9 — Deployment strategy** | User | Rolling / Blue-Green / Canary / Recreate + rollback rules |
+| S14 | **Step 10 — Observability hookup** | User | Logs sink, metrics sink, alert channels |
+| S15 | **Step 11 — Triggers** | User | On push / on tag / manual / cron / on PR merge |
+| S16 | **Step 12 — Review & launch** | User | Full summary, edit any step, launch |
+| S17 | **Step 13 — Live execution view** | User | Streaming logs, per-step status, cancel, retry |
+
+### 6.3 Dashboard (Journey 2)
+
+| # | Screen | Persona | Purpose |
+|---|---|---|---|
+| S18 | **Dashboard home** | Both | Overview tiles: total apps, envs, deploys today/week, 7-day success rate, active executions |
+| S19 | **By Environment — env list** | Both | dev / staging / prod tiles with rollup health |
+| S20 | **Environment detail** | Both | Table of apps in that env (version, last deploy, deployed by, health, logs link) |
+| S21 | **By Application — app list** | Both | All apps in the project, filterable |
+| S22 | **Application detail** | Both | Tabs: Versions across envs · Deployment history · Logs · Metrics · Alerts · Config |
+| S23 | **Live logs viewer** | Both | WebSocket tail with filter, time range, download |
+| S24 | **Metrics viewer** | Both | Pre-baked charts (CPU, mem, RPS, error rate) with deployment markers overlaid |
+| S25 | **Activity feed** | Both | Who deployed what, where, when; filterable by user/app/env/status |
+| S26 | **Execution detail** | Both | Re-open any past execution; logs, artifacts, approver, duration |
+
+### 6.4 Admin screens
+
+| # | Screen | Persona | Purpose |
+|---|---|---|---|
+| S27 | **Cloud connectors list** | Admin | All connectors, health-check status (red dot if broken), add/edit/delete |
+| S28 | **Add / edit cloud connector** | Admin | Schema-driven form per cloud (AWS / Azure / GCP / K8s / on-prem); validates on save |
+| S29 | **Container registries** | Admin | Docker Hub / ECR / ACR / GAR / GHCR / generic OCI; credentials & default registry |
+| S30 | **Repo connectors** | Admin | GitHub / GitLab / Bitbucket / Azure Repos / generic Git; org-wide install of GitHub App, etc. |
+| S31 | **Secret managers** | Admin | Built-in vault OR reference customer Vault / AWS SM / Azure KV / GCP SM |
+| S32 | **Secrets browser** | Admin | List, rotate, audit access; secret values never shown in UI after creation |
+| S33 | **Environments management** | Admin | Create/edit envs, mark prod, set approval rules, bind to clusters/clouds, per-env vars |
+| S34 | **Notification channels** | Admin | Slack / Teams / email / webhook / PagerDuty; test send |
+| S35 | **Users & RBAC** | Admin | Invite users, assign Admin or User, scope to projects/envs |
+| S36 | **Approval inbox** | Admin | Pending prod-deploy approvals; approve, reject, comment |
+| S37 | **Audit log** | Admin | Immutable record of every config change and deploy; filter by actor, resource, time |
+| S38 | **Org settings** | Admin | SSO/SAML config, retention policies, billing (post-v1), default region |
+
+### 6.5 Cross-cutting UI elements
+
+These appear inside many screens, not as standalone routes:
+
+- **Global search** (top bar): apps, envs, executions, users
+- **Live execution drawer** (right-side slide-out): tail any in-flight execution from any screen
+- **Notification bell**: in-app notifications for approvals, failed deploys, unhealthy connectors
+- **Persona-aware nav**: User sees Projects + Dashboard; Admin additionally sees Connectors, Users, Audit, Org Settings
+
+### Screen-to-journey map
+
+```mermaid
+flowchart LR
+    subgraph J1[Journey 1 — Onboard & deploy]
+      S6 --> S7 --> S8 --> S9 --> S10 --> S11 --> S12 --> S13 --> S14 --> S15 --> S16 --> S17
+    end
+    subgraph J2[Journey 2 — Dashboard]
+      S18 --> S19 --> S20
+      S18 --> S21 --> S22
+      S22 --> S23
+      S22 --> S24
+      S18 --> S25 --> S26
+    end
+    subgraph ADMIN[Admin setup — prerequisite to J1]
+      S27 --> S28
+      S30
+      S33
+      S35
+    end
+    ADMIN -.connectors & envs feed.-> J1
+    style ADMIN fill:#bf8700,color:#fff
+    style J1 fill:#1f6feb,color:#fff
+    style J2 fill:#1a7f37,color:#fff
+```
+
+---
+
+## 7. Functional requirements by module
+
+### 7.1 Repository integration
 - Supported providers: GitHub (cloud + Enterprise), GitLab (cloud + self-hosted), Bitbucket, Azure Repos, generic Git over HTTPS/SSH.
 - Auth: OAuth app, PAT, SSH key, GitHub App (recommended for fine-grained perms).
 - Capabilities: list repos, list branches, register webhook, fetch file (for autodetect), clone (delegated to executor).
 - Webhook events: push, tag, PR merge.
 
-### 6.2 Build configuration
+### 7.2 Build configuration
 - Autodetect: presence of `Dockerfile`, `package.json`, `pom.xml`, `requirements.txt`, `go.mod`, `*.csproj`, WaveMaker `wm-project.xml`, etc.
 - Build modes:
   - **Dockerfile** (preferred default)
@@ -220,7 +325,7 @@ Clicking an app row opens its detail page (right side of the diagram above).
 - Outputs: container image (push to registry), or artifact (WAR/zip/static).
 - Container registries: Docker Hub, ECR, ACR, GAR/GCR, GHCR, generic OCI.
 
-### 6.3 Cloud connectors
+### 7.3 Cloud connectors
 - Each connector is a typed plugin. Schema per cloud:
 
 | Cloud | Auth options | Validation |
@@ -233,7 +338,7 @@ Clicking an app row opens its detail page (right side of the diagram above).
 
 - Connectors must support **health check** on a schedule (every 5 min); dashboard shows red dot if a connector is broken.
 
-### 6.4 Deployment targets (per cloud)
+### 7.4 Deployment targets (per cloud)
 
 | Cloud | Targets |
 |---|---|
@@ -245,48 +350,50 @@ Clicking an app row opens its detail page (right side of the diagram above).
 
 Each target has its own config schema (ports, scaling, ingress, etc.) but the **wizard shape** is identical — pick target, fill schema, validate.
 
-### 6.5 Environments
+### 7.5 Environments
 - Named (dev/staging/prod, but free-form).
 - Type: non-prod / prod (governs approval rules).
 - Bound to specific clusters/clouds (an env can span multiple, e.g. prod-us-east + prod-eu-west).
 - Per-env variable overrides.
 
-### 6.6 Deployment strategies
+### 7.6 Deployment strategies
 - **Rolling** — default for K8s/ECS; surge & unavailable knobs.
 - **Blue-Green** — two stacks, traffic swap (LB/ingress swap).
 - **Canary** — % traffic, time per step, auto-promote on healthy.
 - **Recreate** — stop all, then start all (rare, for stateful).
 - Strategy must declare **rollback behavior** (auto-rollback on health-check fail? manual?).
 
-### 6.7 Observability
+### 7.7 Observability
 - **Logs:** built-in storage (ship from executor + from running workloads via sidecar/agent) with retention policy. Plus integrations to push to Datadog/CloudWatch/Loki/ELK.
 - **Metrics:** Prometheus-compatible scrape from the workload; pre-baked dashboards per target type.
 - **Alerts:** rule engine (Prometheus alerting style) + channels (Slack/email/PagerDuty/webhook).
 - **Deployment markers:** every deploy emits a marker visible on metric charts — critical for "did this deploy cause the regression?"
 
-### 6.8 Dashboard
+### 7.8 Dashboard
 - Filters: org, project, app, env, time range, status.
 - Live execution count + WebSocket-based live log tailing.
 - Saved views per user.
 - Exportable (CSV) for management reporting.
 
-### 6.9 Notifications
+### 7.9 Notifications
 - Channels: Slack, MS Teams, email, generic webhook, PagerDuty.
 - Events: pipeline started/failed/succeeded, deploy started/failed/succeeded, approval requested, connector unhealthy.
 
-### 6.10 RBAC
-- Roles: Owner, Admin, Developer, Viewer (start with these four).
-- Scope: per Org, per Project, per Environment (e.g. "Dev can deploy to dev, not prod").
+### 7.10 RBAC
+- Roles: **Admin** and **User** — mirrors the two personas. No other roles in v1.
+  - **Admin**: full control over connectors, environments, RBAC, secrets, governance; can deploy to any environment.
+  - **User**: can create/edit applications and pipelines within projects they're added to; can deploy to non-prod environments by default; prod requires an Admin approval.
+- Scope: per Org, per Project, per Environment (e.g. "User X can deploy to dev/staging in project Y, not prod").
 - Audit log of every config change and every deploy.
 
-### 6.11 Secrets
+### 7.11 Secrets
 - Never store customer secrets in app DB.
 - Either: (a) built-in secret store backed by Vault/KMS, or (b) reference customer's own (AWS SM, Azure KV, GCP SM, HashiCorp Vault).
 - Secrets referenced by alias in env vars (`${secret:db-password}`).
 
 ---
 
-## 7. Non-functional requirements
+## 8. Non-functional requirements
 
 | Area | Requirement |
 |---|---|
